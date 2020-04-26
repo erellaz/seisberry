@@ -1,4 +1,4 @@
-# seisberry
+# Seisberry
 Code for Raspberry Pi seismograph, 3 components
 
 ## Running on the Raspberry
