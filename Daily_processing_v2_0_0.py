@@ -44,9 +44,13 @@ rerun=1 #this value should remain at 1 for optimum behaviour in 99% of the cases
 
 File_date = datetime.now()- timedelta(days=1)
 # Either manual if you want to reprocess past data
-#datadir=r"D:\Seisberry\2020-04-21"
+datadir=r"D:\Seisberry\2020-04-24"
 # or automatic, for today's data:
-datadir=os.path.join(r"D:\Seisberry",File_date.strftime("%Y-%m-%d"))
+#datadir=os.path.join(r"D:\Seisberry",File_date.strftime("%Y-%m-%d"))
+
+# File extension of the files conatianing the raw data. Example, your raw files 
+# are named:20200425_040500.txt.done
+raw_ext=".done"
 
 #Optional, if you plan to output traces as SEGY or miniseed
 miniseeddir=r"D:\Seisberry\miniseed"
@@ -130,7 +134,7 @@ if (rerun==0):
     print("Loading form raw data:")
     data=np.empty((0,5),float)
     for filename in sorted(os.listdir(datadir)):
-        if filename.endswith(".txt"):
+        if filename.endswith(raw_ext):
             filename_date = filename
             print(filename,data.shape)#,data2.shape)
             try:
