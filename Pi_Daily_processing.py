@@ -153,9 +153,10 @@ for filename in sorted(os.listdir(datadir)):
         #print(filename,data.shape,data2.shape)
         try:
             data3=np.add.reduceat(data2, np.arange(0,data2.shape[0],decimation))
-            print(filename,data.shape,data2.shape,"decimated to:",data3.shape)
+            print(filename,data.shape,data2.shape,"decimated to:",data3.shape,"start at, UTC:",UTCDateTime(data2[0][0]))#,starttime)
             if(UTCDateTime(data2[0][0])<starttime):
-                starttime=UTCDateTime(data3[0][0])
+                starttime=UTCDateTime(data2[0][0])
+                print("Updating starttime to ",starttime, "- UTC")
             data = np.append(data,data3[:,comp],axis=0)
             del data2, data3
         except:
@@ -178,7 +179,7 @@ statsx.update({'starttime': starttime})
 #______________________________________________________________________________
 # Generate the dayplot and write to miniSeed format, for each component
 print("Generating trace...")
-statsx.update({'channel': 'BH'+str(comp)})
+statsx.update({'channel': 'BH'+str(comp)+"."+filename_date[4:6]+"-"+filename_date[6:8]})
 Xt = Trace(data=data[:], header=statsx)
 #Xt.filter('lowpass', freq=50, corners=2, zerophase=True)
 del data
