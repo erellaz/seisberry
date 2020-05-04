@@ -11,4 +11,7 @@ https://github.com/erellaz/RaspberryPi-seismograph/blob/master/README.md
 
 ## Help and install guide
 Visit http://erellaz.com/seisberry
-Read the Jupiter Notebook provided with the project
+
+Read the Jupiter Notebook provided with the project. I spent quite a long time building this documentation, and it should help other users  dramatically cut time and avoid frustration building their own seisberry. 
+https://github.com/erellaz/seisberry/blob/master/seisberry.ipynb
+
