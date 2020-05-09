@@ -14,7 +14,7 @@ time_to_print=str(pagetime.strftime("%Y-%m-%d"))
 # Move the images to the www directory
 for filename in sorted(os.listdir(imagedir)):
     	if filename.endswith(".png"):
-            os.rename(os.path.join(imagedir,filename),os.path.join(outgallery),filename)
+            os.rename(os.path.join(imagedir,filename),os.path.join(os.path.dirname(outgallery),filename))
             
 #__________________________________________________________________________________________________________
 # Build the html pages showcasing the pictures
