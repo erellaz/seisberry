@@ -1,0 +1,76 @@
+//Geophone support RTC 10Hz
+
+//Dimensions-------------------------------------------------
+//All in mm
+
+// Geophone dimensions
+hg=34;   //height
+dg=26;  //diameter 
+
+// support
+bases=40;
+
+hs=15;
+w=9;
+e=6;
+
+//holes
+dh=3;
+th=27;
+
+//groove
+gw=6;
+gd=10;
+gdd=3;
+//--------------------------------------------------------------
+$fn=100;//resolution
+
+module Make_body() {
+difference(){
+union(){
+translate([0,0,hs/2]) cube([bases-10,bases,hs],center=true);
+translate([0,0,dg/4]) cube([bases-10,bases,dg/2],center=true);
+}
+translate([0,-15,e+dg/2])  rotate([90,0,0]) cylinder(h=hg+30,d=dg,center=true);
+}
+}
+
+
+module Make_holes() {
+union(){
+rotate([0,0,45])translate([th,0,0]) cylinder(h=3*hs,d=dh,center=true);
+rotate([0,0,135])translate([th,0,0]) cylinder(h=3*hs,d=dh,center=true);
+rotate([0,0,225])translate([th,0,0]) cylinder(h=3*hs,d=dh,center=true);
+rotate([0,0,315])translate([th,0,0]) cylinder(h=3*hs,d=dh,center=true);
+}}
+
+module Make_groove() {
+    union(){
+    cube([100,gw,gd],center=true);
+    //rotate([0,0,90]) cube([100,gw,gd],center=true);
+}}
+
+module Make_groove_holes(){
+   union(){
+    translate([(gdd+bases)/2-10,0,0])rotate([0,90,0])cube([100,gw,gdd],center=true);
+    translate([-(gdd+bases)/2+10,0,0])rotate([0,90,0])cube([100,gw,gdd],center=true);
+}}
+
+
+/*
+color( "blue", 1.0 ) {
+Make_groove_holes();
+}
+*/
+
+
+difference(){
+Make_body();
+Make_groove();
+}
+
+
+
+color( "green", 1.0 ) {
+translate([0,0,e+dg/2])  rotate([90,0,0])cylinder(h=hg,d=dg,center=true);
+}
