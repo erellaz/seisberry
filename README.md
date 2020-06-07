@@ -1,6 +1,11 @@
 # Seisberry
 Code for Raspberry Pi seismograph, 3 components
 
+## Eager to start? Follow the fast build guide.
+This page should get you up and running in 30 to 60 minutes, using an image of the Seisberry, with everything ready.
+No need to mess with compiling or running codes if you don't want to. Just connect the parts, set the jumpers and start recording.
+https://erellaz.com/wp-admin/post.php?post=1460&action=edit
+
 ## Running on the Raspberry
 The python code prefixed Pi_ are optimized to run within the 32 bit memory limits of the Raspberry hardware.
 The rest of the code is optimized for 64 bit systems, like a desktop with ample memory.
